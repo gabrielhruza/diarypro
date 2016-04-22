@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Profesion list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for profesion in profesions %}
+            <tr>
+                <td><a href="{{ path('profesion_show', { 'id': profesion.id }) }}">{{ profesion.id }}</a></td>
+                <td>{{ profesion.nombre }}</td>
+                <td>{{ profesion.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('profesion_show', { 'id': profesion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('profesion_edit', { 'id': profesion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('profesion_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

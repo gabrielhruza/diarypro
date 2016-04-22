@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Telefono</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ telefono.id }}</td>
+            </tr>
+            <tr>
+                <th>Prioridad</th>
+                <td>{{ telefono.prioridad }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ telefono.numero }}</td>
+            </tr>
+            <tr>
+                <th>Celular</th>
+                <td>{% if telefono.celular %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('telefono_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('telefono_edit', { 'id': telefono.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
