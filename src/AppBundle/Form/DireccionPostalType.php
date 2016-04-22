@@ -17,6 +17,7 @@ class DireccionPostalType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
         $builder
             ->add('prioridad', ChoiceType::class, array(
                     'choices'  => array(
@@ -28,14 +29,19 @@ class DireccionPostalType extends AbstractType
                 'class' => 'AppBundle:Provincia',
                 'choice_value'  => 'id',
                 'choice_label'   => 'nombre',
-                ))
-            /*->add('localidad', EntityType::class, array(
+                ))*/
+            
+            ->add('provincia')
+
+            ->add('localidad', EntityType::class, array(
                 'class' => 'AppBundle:Ciudad',
                 'choice_value'  => 'id',
                 'choice_label'   => 'nombre',
-                ))*/
-            ->add('provincia')
-            ->add('localidad')
+                'data' => 'Resistencia'
+                
+                ))
+            
+            //->add('localidad')
             ->add('codPostal')
             ->add('calle')
             ->add('numero')

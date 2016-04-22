@@ -16,7 +16,7 @@ class ProvinciaType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('ciudades')
+            //->add('ciudades')
         ;
     }
     
