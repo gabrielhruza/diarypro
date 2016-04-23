@@ -25,7 +25,11 @@ class DireccionPostalType extends AbstractType
                     'Secundario' => 'secundario',
                     ),
             ))
-           
+            /*->add('provincia', EntityType::class, array(
+                'class' => 'AppBundle:Provincia',
+                'choice_value'  => 'id',
+                'choice_label'   => 'nombre',
+                ))*/
             
             ->add('provincia')
 
