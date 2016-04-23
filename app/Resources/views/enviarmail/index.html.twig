@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>EnviarMail list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>De</th>
+                <th>Para</th>
+                <th>Asunto</th>
+                <th>Cuerpo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enviarMail in enviarMails %}
+            <tr>
+                <td><a href="{{ path('enviarmail_show', { 'id': enviarMail.id }) }}">{{ enviarMail.id }}</a></td>
+                <td>{{ enviarMail.de }}</td>
+                <td>{{ enviarMail.para }}</td>
+                <td>{{ enviarMail.asunto }}</td>
+                <td>{{ enviarMail.cuerpo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('enviarmail_show', { 'id': enviarMail.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('enviarmail_edit', { 'id': enviarMail.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
