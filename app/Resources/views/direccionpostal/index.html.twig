@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>DireccionPostal list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prioridad</th>
+                <th>Provincia</th>
+                <th>Localidad</th>
+                <th>Codpostal</th>
+                <th>Calle</th>
+                <th>Numero</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for direccionPostal in direccionPostals %}
+            <tr>
+                <td><a href="{{ path('direccionpostal_show', { 'id': direccionPostal.id }) }}">{{ direccionPostal.id }}</a></td>
+                <td>{{ direccionPostal.prioridad }}</td>
+                <td>{{ direccionPostal.provincia }}</td>
+                <td>{{ direccionPostal.localidad }}</td>
+                <td>{{ direccionPostal.codPostal }}</td>
+                <td>{{ direccionPostal.calle }}</td>
+                <td>{{ direccionPostal.numero }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('direccionpostal_show', { 'id': direccionPostal.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('direccionpostal_edit', { 'id': direccionPostal.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('direccionpostal_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

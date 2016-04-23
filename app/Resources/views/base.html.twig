@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Agenda de profesionales{% endblock %}</title>
+        {% block stylesheets %}
+        <link href="{{ asset('bundles/app/css/bootstrap.min.css') }}" type="text/css" rel="
+        stylesheet" />
+        <link href="{{ asset('bundles/app/fonts/glyphicons-halflings-regular.eot') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/app/fonts/glyphicons-halflings-regular.svg') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/app/fonts/glyphicons-halflings-regular.woff') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/app/fonts/glyphicons-halflings-regular.woff2')}}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+       
+        {{ include('default/header.html.twig')}}
+      
+        <div class="container-fluid">
+        <div class="row-fluid">
+        <div class="col-md-3">
+        <!--Sidebar content-->
+        {{ include('default/menu.html.twig')}}
+        </div>
+        <div class="col-md-9">
+        {% block contenido %}
+        {# include('default/principal.html.twig')#}
+        {% endblock %}
+    </div>
+  </div>
+</div>
+
+        {% endblock %}
+        {% block javascripts %}
+        <script src="{{ asset('bundles/app/js/jquery-2.2.3.js') }}"></script>
+        <script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
+        <script>
+        $("#profesional_direccionPostal_provincia").change(function() {
+        
+         var data = {
+            provincia_id: $(this).val()
+        };
+
+        $.ajax({
+
+            type: 'post',
+            url: "{{ path('homepage_listarporprovincia' , {'id' : 1}) }}",
+            data: data,
+            success: function(data) {
+                var $ciudad_selector = $('#profesional_direccionPostal_localidad');
+                
+                
+                $ciudad_selector.html('');
+                //$ciudad_selector.append('<option value="' + data[0].id + '">' + data[0].nombre + '</option>');
+                //$ciudad_selector.parent().remove($this);
+
+
+                for (var i = 0; i<data.length; i++) {
+                    $ciudad_selector.append('<option value="' + data[i].id + '">' + data[i].nombre + '</option>');
+                }
+            }
+        });
+        });
+        </script>
+        {% endblock %}
+    </body>
+</html>
+
+
+
